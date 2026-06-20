@@ -2,13 +2,17 @@ name = "etenbijdaan"
 compatibility_date = "2026-06-20"
 workers_dev = false
 
+# Custom domains (zones moeten in Cloudflare staan + NS naar Cloudflare wijzen).
+routes = [
+  { pattern = "etenbijdaan.nl", custom_domain = true },
+  { pattern = "www.etenbijdaan.nl", custom_domain = true },
+  { pattern = "etenvandaan.nl", custom_domain = true },
+  { pattern = "www.etenvandaan.nl", custom_domain = true },
+  { pattern = "etenmetdaan.nl", custom_domain = true },
+  { pattern = "www.etenmetdaan.nl", custom_domain = true },
+]
+
 # Statische site (assets-only Worker). Geserveerd vanuit ./public.
 [assets]
 directory = "./public"
 not_found_handling = "single-page-application"
-
-# Custom domain wordt na de eerste deploy gekoppeld (zie CLAUDE.md).
-# routes = [
-#   { pattern = "etenbijdaan.nl", custom_domain = true },
-#   { pattern = "www.etenbijdaan.nl", custom_domain = true },
-# ]
