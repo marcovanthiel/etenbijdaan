@@ -1,0 +1,14 @@
+name = "etenbijdaan"
+compatibility_date = "2026-06-20"
+workers_dev = false
+
+# Statische site (assets-only Worker). Geserveerd vanuit ./public.
+[assets]
+directory = "./public"
+not_found_handling = "single-page-application"
+
+# Custom domain wordt na de eerste deploy gekoppeld (zie CLAUDE.md).
+# routes = [
+#   { pattern = "etenbijdaan.nl", custom_domain = true },
+#   { pattern = "www.etenbijdaan.nl", custom_domain = true },
+# ]

@@ -1,0 +1,8 @@
+node_modules/
+.wrangler/
+.dev.vars
+.DS_Store
+*.log
+
+# workflow lokaal bewaard; pushen vereist gh `workflow`-scope
+.github/workflows/
