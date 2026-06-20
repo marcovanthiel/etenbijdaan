@@ -50,7 +50,11 @@ p{margin:0 0 1.1em}
 /* Header */
 .site-header{position:sticky;top:0;z-index:50;background:rgba(38,38,38,.96);backdrop-filter:blur(6px);}
 .nav{display:flex;align-items:center;justify-content:space-between;min-height:74px}
+.logo{cursor:pointer}
 .logo img{filter:brightness(0) invert(1);height:38px;width:auto}
+/* Easter egg: dubbelklik op het logo = rondje draaien */
+.logo img.spin{animation:logo-spin .7s cubic-bezier(.5,0,.5,1)}
+@keyframes logo-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 .nav-links{display:flex;align-items:center;gap:6px}
 .nav-links a{color:#f1eee9;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;font-weight:600;padding:10px 14px;border-radius:2px}
 .nav-links a:hover{color:#fff}

@@ -21,7 +21,7 @@
 
 <header class="site-header" id="top">
   <div class="wrap nav">
-    <a class="logo" href="#top"><img src="/images/logo-voldaan.png" alt="Voldaan" width="150"></a>
+    <a class="logo" href="#top" id="logo" title="Naar boven"><img src="/images/logo-voldaan.png" alt="Voldaan" width="150"></a>
     <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
     <nav class="nav-links" id="navLinks" aria-label="Hoofdmenu">
       <a href="#welkom">Welkom</a>
@@ -180,6 +180,22 @@
   document.querySelectorAll('#navLinks a').forEach(function (a) {
     a.addEventListener('click', function () { l.classList.remove('open'); t.setAttribute('aria-expanded', 'false'); });
   });
+  // Logo: enkele klik = soepel naar boven; dubbelklik = easter egg (rondje draaien)
+  var logo = document.getElementById('logo'), logoImg = logo && logo.querySelector('img');
+  if (logo) {
+    logo.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    logo.addEventListener('dblclick', function (e) {
+      e.preventDefault();
+      if (!logoImg) return;
+      logoImg.classList.remove('spin');
+      void logoImg.offsetWidth;       // forceer reflow zodat de animatie opnieuw start
+      logoImg.classList.add('spin');
+    });
+    if (logoImg) logoImg.addEventListener('animationend', function () { logoImg.classList.remove('spin'); });
+  }
 </script>
 </body>
 </html>
