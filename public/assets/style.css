@@ -127,6 +127,33 @@ address{font-style:normal;line-height:1.9}
 .band .btn{background:#fff;color:var(--accent-dark)}
 .band .btn:hover{background:#262626;color:#fff}
 
+/* Ervaring / recensie */
+.review{background:var(--bg-soft)}
+.testimonial{max-width:780px;margin:0 auto 50px;text-align:center;position:relative}
+.testimonial .stars{color:var(--accent);font-size:1.25rem;letter-spacing:.18em;margin-bottom:16px}
+.testimonial blockquote{margin:0;font-size:1.16rem;line-height:1.72;color:var(--ink)}
+.testimonial blockquote p{margin:0 0 1.05em}
+.testimonial blockquote p:last-child{margin-bottom:0}
+.testimonial::before{content:"\201C";position:absolute;top:-26px;left:50%;transform:translateX(-50%);
+  font-family:'Quicksand',sans-serif;font-size:5rem;line-height:1;color:var(--accent);opacity:.18}
+.testimonial figcaption{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:26px}
+.testimonial__chef{width:62px;height:62px;border-radius:50%;object-fit:cover;object-position:center 18%;
+  box-shadow:0 3px 12px rgba(0,0,0,.18)}
+.testimonial__who{font-family:'Quicksand',sans-serif;font-weight:700;color:var(--accent);
+  text-align:left;display:flex;flex-direction:column;line-height:1.3}
+.testimonial__who small{font-family:'Open Sans',sans-serif;font-weight:400;color:var(--muted);
+  font-size:.82rem;letter-spacing:0}
+
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:840px){.gallery{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.gallery{grid-template-columns:1fr;max-width:430px;margin:0 auto}}
+.gallery figure{margin:0;position:relative;overflow:hidden;border-radius:4px}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .4s ease}
+.gallery figure:hover img{transform:scale(1.04)}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 14px 10px;color:#fff;
+  font-size:.82rem;letter-spacing:.02em;text-align:left;
+  background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.62))}
+
 /* Hoe werkt het (stappen) */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:8px}
 @media(max-width:760px){.steps{grid-template-columns:1fr;max-width:460px;margin:8px auto 0}}
