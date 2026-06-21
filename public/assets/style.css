@@ -144,15 +144,33 @@ address{font-style:normal;line-height:1.9}
 .testimonial__who small{font-family:'Open Sans',sans-serif;font-weight:400;color:var(--muted);
   font-size:.82rem;letter-spacing:0}
 
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:840px){.gallery{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:520px){.gallery{grid-template-columns:1fr;max-width:430px;margin:0 auto}}
-.gallery figure{margin:0;position:relative;overflow:hidden;border-radius:4px}
-.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .4s ease}
-.gallery figure:hover img{transform:scale(1.04)}
-.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:18px 14px 10px;color:#fff;
-  font-size:.82rem;letter-spacing:.02em;text-align:left;
-  background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.62))}
+/* Diavoorstelling */
+.slideshow{position:relative;max-width:880px;margin:0 auto;border-radius:6px;overflow:hidden;
+  background:#1c1c1c;box-shadow:0 12px 34px rgba(0,0,0,.18)}
+.slideshow:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.slides{position:relative;aspect-ratio:4/3}
+.slide{position:absolute;inset:0;margin:0;opacity:0;visibility:hidden;transition:opacity .7s ease}
+.slide.is-active{opacity:1;visibility:visible}
+.slide img{width:100%;height:100%;object-fit:cover;object-position:center}
+.slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:46px 22px 18px;color:#fff;
+  font-family:'Quicksand',sans-serif;font-weight:600;letter-spacing:.02em;font-size:1.02rem;text-align:left;
+  background:linear-gradient(180deg,rgba(0,0,0,0),rgba(0,0,0,.72))}
+.slide-nav{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:46px;height:46px;border:0;
+  border-radius:50%;background:rgba(0,0,0,.42);color:#fff;font-size:1.7rem;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;transition:background .15s}
+.slide-nav:hover{background:var(--accent)}
+.slide-nav.prev{left:14px}
+.slide-nav.next{right:14px}
+.slide-dots{position:absolute;left:0;right:0;bottom:12px;z-index:2;display:flex;gap:8px;justify-content:center}
+.slide-dots button{width:9px;height:9px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.5);
+  cursor:pointer;transition:background .15s,transform .15s}
+.slide-dots button:hover{background:rgba(255,255,255,.85)}
+.slide-dots button.is-active{background:#fff;transform:scale(1.3)}
+@media(max-width:560px){
+  .slide figcaption{font-size:.9rem;padding:38px 16px 16px}
+  .slide-nav{width:40px;height:40px;font-size:1.5rem}
+  .slide-nav.prev{left:8px}.slide-nav.next{right:8px}
+}
 
 /* Hoe werkt het (stappen) */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:8px}

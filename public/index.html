@@ -127,11 +127,12 @@
           een avond geworden die we niet meer vergeten. Nog vóór het eerste glas was ingeschonken
           stond onze keuken vol heerlijke geuren, en daar bleef het bij: wij hoefden níéts, behalve
           genieten. Wat een rust en wat een gastvrijheid.</p>
-        <p>En dan het eten. Een warme brioche, gul overladen met verse zwarte truffel. Een sappige
-          kwartel op een wilde kruidensla. Een portobello met truffel die je niet meer wilt delen.
-          Gebraiseerd vlees naast een perfect gebakken stukje vis. En tot slot een dessert dat zó
-          mooi was dat we even niet durfden te beginnen. Elk bord een klein kunstwerk, elke gang
-          op restaurantniveau — gewoon, aan onze eigen tafel.</p>
+        <p>En dan het eten. Een warme brioche met parmezaanschuim en verse Italiaanse truffel.
+          Een sappige kwartel op een wilde kruidensla. Een portobello met truffel die je niet meer
+          wilt delen. Een rendang met gebakken rijst en oosterse groenten die je zó weer voor je
+          ziet. En een zalmrol met drie bereidingen van zalm, gelardeerd met pistacheschuim, om
+          stil van te worden. Elk bord een klein kunstwerk, elke gang op restaurantniveau —
+          gewoon, aan onze eigen tafel.</p>
         <p>Aandacht voor onze wensen, prachtige wijnen erbij, en een chef die het oprecht naar zijn
           zin had. We keerden niet huiswaarts — we wáren al thuis — maar dat ene gevoel was er net
           zo goed: helemaal <strong>voldaan</strong>. Daan, duizendmaal dank. Wie twijfelt: doen.</p>
@@ -142,13 +143,19 @@
       </figcaption>
     </figure>
 
-    <div class="gallery">
-      <figure><img src="/images/kerstdiner-1.jpg" alt="Warme brioche met verse zwarte truffel" loading="lazy" decoding="async"><figcaption>Brioche met verse truffel</figcaption></figure>
-      <figure><img src="/images/kerstdiner-4.jpg" alt="Gebraden kwartel op een wilde kruidensla" loading="lazy" decoding="async"><figcaption>Kwartel met wilde kruiden</figcaption></figure>
-      <figure><img src="/images/kerstdiner-3.jpg" alt="Portobello met truffel en geroosterde groenten" loading="lazy" decoding="async"><figcaption>Portobello met truffel</figcaption></figure>
-      <figure><img src="/images/kerstdiner-2.jpg" alt="Gebraiseerd vlees met gebakken vis en knapperige groenten" loading="lazy" decoding="async"><figcaption>Vlees & vis, feestelijk geserveerd</figcaption></figure>
-      <figure><img src="/images/kerstdiner-6.jpg" alt="Verfijnd gerecht met mango, een krokant element en schuim" loading="lazy" decoding="async"><figcaption>Verrassend tussengerecht</figcaption></figure>
-      <figure><img src="/images/kerstdiner-5.jpg" alt="Dessert met blauwe bessen en pistache" loading="lazy" decoding="async"><figcaption>Dessert om stil van te worden</figcaption></figure>
+    <div class="slideshow" id="kerstShow" aria-roledescription="diavoorstelling" aria-label="Foto's van het privé-kerstdiner 2025">
+      <div class="slides">
+        <figure class="slide is-active"><img src="/images/kerstdiner-1.jpg" alt="Brioche met parmezaanschuim en verse Italiaanse truffel" decoding="async"><figcaption>Brioche met parmezaanschuim en verse Italiaanse truffel</figcaption></figure>
+        <figure class="slide"><img src="/images/kerstdiner-4.jpg" alt="Gebraden kwartel op een wilde kruidensla" loading="lazy" decoding="async"><figcaption>Kwartel met wilde kruiden</figcaption></figure>
+        <figure class="slide"><img src="/images/kerstdiner-3.jpg" alt="Portobello met truffel en geroosterde groenten" loading="lazy" decoding="async"><figcaption>Portobello met truffel</figcaption></figure>
+        <figure class="slide"><img src="/images/kerstdiner-2.jpg" alt="Rendang met gebakken rijst en oosterse groenten" loading="lazy" decoding="async"><figcaption>Rendang met gebakken rijst en oosterse groenten</figcaption></figure>
+        <figure class="slide"><img src="/images/kerstdiner-6.jpg" alt="Verfijnd tussengerecht met mango, een krokant element en schuim" loading="lazy" decoding="async"><figcaption>Verrassend tussengerecht</figcaption></figure>
+        <figure class="slide"><img src="/images/kerstdiner-5.jpg" alt="Zalmrol met drie bereidingen van zalm, gelardeerd met pistacheschuim" loading="lazy" decoding="async"><figcaption>Zalmrol met drie bereidingen van zalm, gelardeerd met pistacheschuim</figcaption></figure>
+        <figure class="slide"><img src="/images/kerstdiner-chef.jpg" alt="Chef Daan tijdens het privé-kerstdiner" style="object-position:center 12%" loading="lazy" decoding="async"><figcaption>Chef Daan — kookt bij u thuis</figcaption></figure>
+      </div>
+      <button type="button" class="slide-nav prev" aria-label="Vorige foto">&#8249;</button>
+      <button type="button" class="slide-nav next" aria-label="Volgende foto">&#8250;</button>
+      <div class="slide-dots" id="kerstDots" aria-label="Kies een foto"></div>
     </div>
   </div>
 </section>
@@ -237,6 +244,62 @@
     });
     if (logoImg) logoImg.addEventListener('animationend', function () { logoImg.classList.remove('spin'); });
   }
+
+  // Diavoorstelling kerstdiner: autoplay + pijlen + bolletjes + swipe + toetsenbord
+  (function () {
+    var show = document.getElementById('kerstShow');
+    if (!show) return;
+    var slides = Array.prototype.slice.call(show.querySelectorAll('.slide'));
+    var dotsWrap = document.getElementById('kerstDots');
+    var i = 0, timer = null, DELAY = 5000;
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var dots = slides.map(function (s, n) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Foto ' + (n + 1) + ' van ' + slides.length);
+      b.addEventListener('click', function () { go(n); restart(); });
+      dotsWrap.appendChild(b);
+      return b;
+    });
+
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      slides.forEach(function (s, k) { s.classList.toggle('is-active', k === i); });
+      dots.forEach(function (d, k) { d.classList.toggle('is-active', k === i); });
+    }
+    function next() { go(i + 1); }
+    function prev() { go(i - 1); }
+    function start() { if (!reduce && !timer) timer = setInterval(next, DELAY); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
+
+    show.querySelector('.slide-nav.next').addEventListener('click', function () { next(); restart(); });
+    show.querySelector('.slide-nav.prev').addEventListener('click', function () { prev(); restart(); });
+
+    show.addEventListener('mouseenter', stop);
+    show.addEventListener('mouseleave', start);
+    show.addEventListener('focusin', stop);
+    show.addEventListener('focusout', start);
+
+    var x0 = null;
+    show.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    show.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      var dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) { (dx < 0 ? next : prev)(); restart(); }
+      x0 = null;
+    });
+
+    show.setAttribute('tabindex', '0');
+    show.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { next(); restart(); }
+      else if (e.key === 'ArrowLeft') { prev(); restart(); }
+    });
+
+    go(0);
+    start();
+  })();
 </script>
 </body>
 </html>
