@@ -51,6 +51,13 @@ npm run deploy   # handmatig deployen (lokale wrangler-OAuth)
 Push naar `main` → GitHub Actions deployt automatisch (zodra de
 CI-secrets staan). Account-ID: `04865fcd4034789d3970c1b51950227c`.
 
+## Changelog
+
+- **10-9-2026**: Toegankelijkheidsverklaring toegevoegd op `/toegankelijkheid`
+  (`public/toegankelijkheid.html`, WCAG 2.2 AA-streven conform EAA/EN 301 549,
+  melden via info@voldaan.eu) + footerlink "Toegankelijkheidsverklaring" op de
+  homepage, footerlinks in contrastkleur, pagina in sitemap.xml.
+
 ## Bron-content opnieuw ophalen
 
 Snapshot: `https://web.archive.org/web/20210727092604/https://www.voldaan.eu/`

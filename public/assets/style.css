@@ -116,6 +116,8 @@ address{font-style:normal;line-height:1.9}
 /* Footer */
 .site-footer{background:var(--darker);color:#9a948c;font-size:.85rem;padding:22px 0}
 .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.site-footer a{color:#cfc7bc}
+.site-footer a:hover{color:#fff}
 .backtop{color:#cfc7bc}
 .backtop:hover{color:#fff}
 
