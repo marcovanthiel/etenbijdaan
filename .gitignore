@@ -4,5 +4,3 @@ node_modules/
 .DS_Store
 *.log
 
-# workflow lokaal bewaard; pushen vereist gh `workflow`-scope
-.github/workflows/
