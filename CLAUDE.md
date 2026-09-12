@@ -48,10 +48,17 @@ npm run dev      # wrangler dev (lokale preview)
 npm run deploy   # handmatig deployen (lokale wrangler-OAuth)
 ```
 
-Push naar `main` → GitHub Actions deployt automatisch (zodra de
-CI-secrets staan). Account-ID: `04865fcd4034789d3970c1b51950227c`.
+**Push naar `main` → GitHub Actions deployt automatisch** (`.github/workflows/deploy.yml`,
+wrangler-action v4 SHA-gepind, `wranglerVersion 4.107.0` zodat `public/_headers`
+wordt toegepast). Secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` staan
+sinds 12-9-2026 in de repo; GitHub = bron, lokaal deployen alleen als noodfix.
+Dependabot + auto-merge zoals de andere repo's. Account-ID:
+`04865fcd4034789d3970c1b51950227c`.
 
 ## Changelog
+
+- **12-9-2026**: CI-deploy geactiveerd (GitHub Actions + Dependabot; fase 3 van de
+  platform-gelijktrekking). Was handmatig `npm run deploy`; nu push = deploy.
 
 - **10-9-2026**: Toegankelijkheidsverklaring toegevoegd op `/toegankelijkheid`
   (`public/toegankelijkheid.html`, WCAG 2.2 AA-streven conform EAA/EN 301 549,
