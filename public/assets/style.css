@@ -1,5 +1,21 @@
-/* Restaurant Voldaan — schone reconstructie van de huisstijl.
-   Quicksand (koppen) + Open Sans (tekst), accent #CB6500, donkere secties. */
+/* Restaurant Voldaan - schone reconstructie van de huisstijl.
+   Quicksand (koppen) + Open Sans (tekst), accent #CB6500, donkere secties.
+   Fonts self-hosted (woff2, latin subset, variabele fonts). */
+
+@font-face{
+  font-family:'Open Sans';
+  font-style:normal;
+  font-weight:400 700;
+  font-display:swap;
+  src:url('/assets/fonts/opensans-latin.woff2') format('woff2');
+}
+@font-face{
+  font-family:'Quicksand';
+  font-style:normal;
+  font-weight:500 700;
+  font-display:swap;
+  src:url('/assets/fonts/quicksand-latin.woff2') format('woff2');
+}
 
 :root{
   --accent:#CB6500;
@@ -78,6 +94,7 @@ p{margin:0 0 1.1em}
 .hero__inner{position:relative;z-index:1;padding:40px 24px}
 .hero__eyebrow{text-transform:uppercase;letter-spacing:.3em;font-size:.78rem;color:#f0c79b;margin:0 0 14px}
 .hero h1{font-size:clamp(2.6rem,7vw,5rem);margin:0;line-height:1.02;text-shadow:0 2px 20px rgba(0,0,0,.35)}
+.hero h1 .hero__sub{display:block;font-size:clamp(1rem,2.4vw,1.5rem);font-weight:500;letter-spacing:.06em;margin-top:12px;text-shadow:0 1px 10px rgba(0,0,0,.4)}
 .hero__tagline{font-size:clamp(1.1rem,2.4vw,1.5rem);margin:14px 0 28px;font-weight:400;letter-spacing:.04em}
 
 /* Welcome */

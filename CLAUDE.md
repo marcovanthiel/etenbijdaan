@@ -57,6 +57,25 @@ Dependabot + auto-merge zoals de andere repo's. Account-ID:
 
 ## Changelog
 
+- **13-9-2026**: SEO-fixes (Track A). etenbijdaan.nl gekozen als **canoniek
+  domein**: self-referencing `<link rel="canonical">` op elke pagina (absolute
+  URL). De site is nu een Worker + Static Assets (`src/index.js`, `main` in
+  wrangler.toml): alle niet-canonieke hosts (etenvandaan.nl, etenmetdaan.nl en
+  alle www-varianten) krijgen een **301** naar etenbijdaan.nl met behoud van
+  pad+query. `run_worker_first = true` zodat de redirect ook op `/` en assets
+  werkt. **Soft 404 opgelost**: `not_found_handling` van `single-page-application`
+  naar `404-page` + nette `public/404.html` (echte HTTP 404, noindex).
+  **JSON-LD** toegevoegd (@graph: LocalBusiness/FoodEstablishment + Person "Daan"
+  + Service + 5-sterren Review, absolute URL's). **Geo-zoekterm**: title en H1
+  bevatten nu "private chef Nijmegen e.o." (H1-subtitel). **Fonts self-hosted**:
+  Quicksand + Open Sans als woff2 (latin, variabel) in `public/assets/fonts/`,
+  Google Fonts + de bijbehorende CSP-uitzonderingen verwijderd; hero-font
+  gepreload. `width`/`height` op content-beelden (CLS). sitemap `lastmod`
+  toegevoegd. LET OP: e-mail staat nog op **info@voldaan.eu** (vierde domein);
+  bewust niet gewijzigd omdat info@etenbijdaan.nl nog geen werkende mailbox is
+  (NAP-punt uit de audit blijft open tot de mailbox er is). Rebranding
+  Voldaan -> Eten bij Daan nog niet uitgevoerd (wacht op Daan).
+
 - **12-9-2026**: CI-deploy geactiveerd (GitHub Actions + Dependabot; fase 3 van de
   platform-gelijktrekking). Was handmatig `npm run deploy`; nu push = deploy.
 

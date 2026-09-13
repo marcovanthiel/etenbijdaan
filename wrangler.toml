@@ -1,8 +1,11 @@
 name = "etenbijdaan"
+main = "src/index.js"
 compatibility_date = "2026-06-20"
 workers_dev = false
 
 # Custom domains (zones moeten in Cloudflare staan + NS naar Cloudflare wijzen).
+# etenbijdaan.nl is canoniek; de andere hosts 301-redirecten naar etenbijdaan.nl
+# (afgehandeld in src/index.js).
 routes = [
   { pattern = "etenbijdaan.nl", custom_domain = true },
   { pattern = "www.etenbijdaan.nl", custom_domain = true },
@@ -12,7 +15,11 @@ routes = [
   { pattern = "www.etenmetdaan.nl", custom_domain = true },
 ]
 
-# Statische site (assets-only Worker). Geserveerd vanuit ./public.
+# Statische site (Worker + Static Assets). Geserveerd vanuit ./public.
+# run_worker_first = true zodat de host-redirect ook op / en op asset-paden werkt.
+# not_found_handling = "404-page" geeft public/404.html met een echte 404-status.
 [assets]
 directory = "./public"
-not_found_handling = "single-page-application"
+binding = "ASSETS"
+not_found_handling = "404-page"
+run_worker_first = true
