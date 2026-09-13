@@ -4,3 +4,7 @@ node_modules/
 .DS_Store
 *.log
 
+
+# Machine-lokale agent-instellingen (nooit committen; .claude/settings.json en
+# .claude/commands/ blijven wél in versiebeheer).
+.claude/settings.local.json
